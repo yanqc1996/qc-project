@@ -1,0 +1,91 @@
+
+/**
+ * @description global.less：存放全局样式，包括全局布局方式，颜色，字体等样式 
+ */
+
+/* 自定义布局容器qc */
+.qc-container {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+
+  .qc-aside {
+    display: flex;
+    flex-shrink: 0;
+    height: 100%;
+  }
+
+  .qc-header {
+    flex-shrink: 0;
+    height: 6vh;
+    line-height: 6vh;
+  }
+
+  .qc-main {
+    display: block;
+    height: 100%;
+  }
+
+  .qc-index {
+    display: flex;
+    height: 100%;
+  }
+
+  .qc-footer {
+    flex-shrink: 0;
+    height: 5vh;
+  }
+}
+
+/* 垂直（flex） */
+.is-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 居中 */
+/* 水平居中 */
+.qc-horizontal-center.is-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.qc-horizontal-center:not(.is-vertical) {
+  display: flex;
+  justify-content: center;
+}
+
+/* 垂直居中（flex） */
+.qc-vertical-center.is-vertical {
+  display: flex;
+  justify-content: center;
+}
+
+.qc-vertical-center:not(.is-vertical) {
+  display: flex;
+  align-items: center;
+}
+
+/* 水平垂直居中（flex） */
+.qc-align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 左侧垂直居中（flex） */
+.qc-left-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 右侧垂直居中（flex） */
+.qc-right-center {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 居中 */
