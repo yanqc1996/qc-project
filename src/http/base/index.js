@@ -48,7 +48,7 @@ class BaseApi {
       retCode,
       retMsg,
     } = data
-    if (retCode !== 1 && retMsg !== '未登录') {
+    if (retCode === 401) {
       //根据状态判断是否进行了登录
       Message({
         message: retMsg,

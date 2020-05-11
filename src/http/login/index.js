@@ -8,7 +8,7 @@ class LoginApi extends BaseApi {
      * @param <String> password: 密码
      * @param <Boolean> ifRemember: 是否记住密码
      */
-    return this.post(`${COMMON_PATH}/login`, data)
+    return this.post(`${COMMON_PATH}/login`,data)
   }
   logout() {
     /**

@@ -27,14 +27,16 @@ export default {
     },
     methods: {
         async login() {
-            // let params = {
-            //     userName: 'admin',
-            //     password: '123456'
-            // }
-            // const res = await LoginApi.login(params)
+            let params = {
+                userName: this.userName,
+                passWord: this.passWord
+            }
+
+            const res = await LoginApi.login(params)
+            console.log(res)
             // console.log(res)
-            sessionStorage.setItem('token', 1)
-            this.$router.push({ name: 'main' })
+            // sessionStorage.setItem('token', 1)
+            // this.$router.push({ name: 'main' })
         }
     }
 }
@@ -108,8 +110,8 @@ export default {
             transform-origin: 50% 16%;
         }
         100% {
-            -webkit-transform: scale(1.25) translateY(-150px);
-            transform: scale(1.25) translateY(-150px);
+            -webkit-transform: scale(1.25) translateY(-100px);
+            transform: scale(1.25) translateY(-100px);
             -webkit-transform-origin: top;
             transform-origin: top;
         }
