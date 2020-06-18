@@ -8,7 +8,6 @@ const responseBody = {
 }
 
 export const builder = (data, message, code = 0, headers = {}) => {
-  responseBody._status = 200
   responseBody.data = data
   if (message !== undefined && message !== null) {
     responseBody.retMsg = message
@@ -21,7 +20,7 @@ export const builder = (data, message, code = 0, headers = {}) => {
   }
   responseBody.timestamp = new Date().getTime()
   return responseBody
-}
+}//返回数据格式话操作
 
 export const getQueryParameters = (options) => {
   const url = options.url
@@ -33,7 +32,7 @@ export const getQueryParameters = (options) => {
     .replace(/"/g, '\\"')
     .replace(/&/g, '","')
     .replace(/=/g, '":"') + '"}')
-}
+}//get方法时获取get的后置参数？应该需要修改
 
 export const getBody = (options) => {
   console.log(options)

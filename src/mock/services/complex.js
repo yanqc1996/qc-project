@@ -1,5 +1,5 @@
 import Mock from 'mockjs'
-import { builder, getBody } from '../util'
+import { builder } from '../util'
 
 const testChange = () => {
     return builder([

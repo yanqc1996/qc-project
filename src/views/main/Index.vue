@@ -1,25 +1,15 @@
 <template>
-    <div class='qc-container'>1
-        <!-- <div v-for="(item,index) in 100" :key='index' style='width:10px;height:10px；border:1px solid black'>
-            <div v-for="(item,index) in 100" :key='index' style='width:10px;height:10px;border:1px solid black'>
-            </div>
-        </div> -->
-    </div>
+    <index-main></index-main>
 </template>
 
 <script>
-/**
- * @description
- */
 export default {
-    components: {},
-    mounted() {},
-    data() {
-        return {}
+    name: 'Index',
+        components: {
+        IndexMain: () => import('@/components/Index/IndexMain'), //主页文件
     },
-    methods: {}
 }
 </script>
 
-<style  scoped>
+<style lang='less'>
 </style>

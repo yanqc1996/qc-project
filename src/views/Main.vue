@@ -1,31 +1,20 @@
 <template>
-    <div class='qc-container'>
-
-    </div>
+    <index-main></index-main>
 </template>
 
 <script>
-/**
- * @description
- */
 export default {
-    components: {},
-    mounted() {
-
+    name: 'Index',
+        components: {
+        IndexMain: () => import('@/components/Index/IndexMain'), //主页文件
     },
-    data() {
-        return {
-
-        }
-    },
-    methods: {}
 }
 </script>
 
 <style lang='less'>
-.qc-test {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
+.pie-circle {
+    width: 180px;
+    height: 180px;
+    // background: transparent;
 }
 </style>

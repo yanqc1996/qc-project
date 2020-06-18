@@ -18,7 +18,12 @@
 import { LoginApi } from '@/http/index' //登录调用接口
 export default {
     components: {},
-    mounted() {},
+    mounted() {
+        console.log(process.env.NODE_ENV)
+        //根据不同的类型进行不同的判断
+        const isPro = process.env.NODE_ENV === 'production' //判断是否是正式部署环境
+        console.log(isPro)
+    },
     data() {
         return {
             userName: '',
@@ -33,7 +38,12 @@ export default {
             }
 
             const res = await LoginApi.login(params)
-            console.log(res)
+            console.log(res.retCode)
+            if (res.retCode === 200) {
+                
+                sessionStorage.setItem('token', 1)
+                this.$router.push({ name: 'main' })
+            }
             // console.log(res)
             // sessionStorage.setItem('token', 1)
             // this.$router.push({ name: 'main' })
