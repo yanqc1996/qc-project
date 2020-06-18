@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class=fluid-main>
         <canvas></canvas>
         <div class="promo">
             <div class="promo-middle">
@@ -36,6 +36,14 @@ export default {
 </script>
 
 <style scoped>
+.fluid-main{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 1;
+}
 @font-face {
     font-family: 'iconfont';
     src: url('iconfont.ttf') format('truetype');
@@ -122,7 +130,7 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: -9999;
     overflow: auto;
     color: lightblue;
     background-color: rgba(0, 0, 0, 0.4);

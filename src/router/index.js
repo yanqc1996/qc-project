@@ -5,8 +5,7 @@ Vue.use(Router)
 const Login = () => import('@/views/Login')
 // 主页
 const Main = () => import('@/views/Main')
-//首页
-const Index = () => import('@/views/main/Index')
+
 
 const router = new Router({
   routes: [{
@@ -15,15 +14,9 @@ const router = new Router({
       component: Login,
     },
     {
-      path: '/',
-      redirect: '/main/index',
+      path: '/main',
       name: 'main',
       component: Main,
-      children: [{
-        path: '/main/index',
-        name: 'index', //主页
-        component: Index,
-      }]
     },
   ]
 })
