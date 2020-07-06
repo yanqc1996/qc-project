@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <h2>{{name}}</h2>
+        <h3>{{content}}</h3>
+        <button onclick="changeData()">改变数据</button>
+    </div>
+</body>
+<script src="js/index.js"></script>
+
+
+<script>
+    var selfVue = new SelfVue({
+        el: '#app',
+        data: {
+            title: 'title1',
+            name: 'name1',
+            content: 'content1'
+        }
+    });
+    function changeData(){
+        selfVue.title='title2'
+        selfVue.name = 'name2';
+        selfVue.content = 'content2'
+    }
+</script>
+
+</html>

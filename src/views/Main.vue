@@ -9,9 +9,10 @@
     </div>
 </template>
 
+
 <script>
 /**
- * @description 主页
+ * @description 主页（数据展示页面绘制）
  */
 export default {
     name: 'Main',
@@ -34,7 +35,6 @@ export default {
 <style lang='less'>
 .main {
     .router-main {
-        background-color: black;
         flex: 1;
     }
 }

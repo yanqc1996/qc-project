@@ -1,27 +1,24 @@
 <template>
-    <div>
-        <el-button @click='change'>切换</el-button>
-        <el-color-picker v-model="color"></el-color-picker>
-    </div>
+    <div></div>
 </template>
 
 <script>
 /**
- * @description 登陆页面
+ * @description vue双向绑定原理实现页面
  */
 export default {
+    name: 'Index',
     data() {
         return {
-            color: '#409EFF'
+            test: {
+                name: 'test'
+            }
         }
     },
-    methods: {
-        change() {
-            this.$store.state.menuType === 'top'
-                ? (this.$store.state.menuType = 'left')
-                : (this.$store.state.menuType = 'top')
-        }
-    }
+    mounted() {
+        console.log(this.test)//可以在控制台看到get/set方法
+    },
+    methods: {}
 }
 </script>
 
