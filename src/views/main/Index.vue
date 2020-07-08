@@ -1,5 +1,8 @@
 <template>
-    <div></div>
+    <div>
+        <!-- <debounce></debounce> -->
+        <throttle></throttle>
+    </div>
 </template>
 
 <script>
@@ -9,15 +12,13 @@
 export default {
     name: 'Index',
     data() {
-        return {
-            test: {
-                name: 'test'
-            }
-        }
+        return {}
     },
-    mounted() {
-        console.log(this.test)//可以在控制台看到get/set方法
+    components: {
+        // Debounce: () => import('@/components/knowPoint/Debounce') //手写防抖函数
+        Throttle: () => import('@/components/knowPoint/Throttle') //手写节流函数
     },
+    mounted() {},
     methods: {}
 }
 </script>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 </head>
+
 <body>
     <div id="app">
         <h1>{{title}}</h1>
@@ -12,8 +13,10 @@
 </body>
 <script src="js/index.js"></script>
 
-
 <script>
+    /**
+     * @description vue双向绑定原理实现手写
+     */
     var selfVue = new SelfVue({
         el: '#app',
         data: {
@@ -22,8 +25,9 @@
             content: 'content1'
         }
     });
-    function changeData(){
-        selfVue.title='title2'
+
+    function changeData() {
+        selfVue.title = 'title2'
         selfVue.name = 'name2';
         selfVue.content = 'content2'
     }
