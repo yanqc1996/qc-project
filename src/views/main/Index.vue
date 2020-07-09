@@ -1,7 +1,7 @@
 <template>
     <div>
-        <!-- <debounce></debounce> -->
-        <throttle></throttle>
+        <debounce></debounce>
+        <!-- <throttle></throttle> -->
     </div>
 </template>
 
@@ -15,8 +15,8 @@ export default {
         return {}
     },
     components: {
-        // Debounce: () => import('@/components/knowPoint/Debounce') //手写防抖函数
-        Throttle: () => import('@/components/knowPoint/Throttle') //手写节流函数
+        Debounce: () => import('@/components/knowPoint/Debounce') //手写防抖函数
+        // Throttle: () => import('@/components/knowPoint/Throttle') //手写节流函数
     },
     mounted() {},
     methods: {}

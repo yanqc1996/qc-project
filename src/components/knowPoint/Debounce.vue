@@ -22,8 +22,8 @@ export default {
         }
     },
     methods: {
-        changeInput: debounce(function(e) {
-            this.changeInputRule(e)
+        changeInput: debounce(function() {
+            this.changeInputRule()
         }, 1000), //防抖查询，避免过于频繁地查询后台数据
         changeInputRule() {
             console.log(1)
