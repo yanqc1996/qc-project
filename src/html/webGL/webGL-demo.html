@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<!-- 这里创建了一个 canvas 元素，并使用 onload 事件创建来初始化 WebGL 上下文。 -->
+
+<body onload="start()">
+    <canvas id="glcanvas" width="640" height="480">
+        Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.
+    </canvas>
+</body>
+
+
+<script>
+    /**
+     * @description webGL原生基础demo
+     */
+    function initWebGL(canvas) {
+        // 创建全局变量】
+        window.gl = null;
+        try {
+            // 尝试获取标准上下文，如果失败，回退到试验性上下文
+            // 这里通过采用 canvas 的 getContext(contextType, contextAttributes) 方法判断浏览器是否支持 WebGL，并创建其上下文。
+            // 当返回值是 canvas 的上下文时，浏览器可支持 WebGL，为 null 时，则创建失败。
+            // 注意，在 IE11 及 Edge 浏览器下，需要使用 "experimental-webgl" 创建 WebGL，此处做了兼容处理。
+            gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+        } catch (e) {
+            throw '创建失败。';
+        }
+        // 如果没有GL上下文，马上放弃
+        if (!gl) {
+            alert("WebGL初始化失败，可能是因为您的浏览器不支持。");
+            gl = null;
+        }
+        return gl;
+    }
+    var gl; // WebGL的全局变量
+
+    function start() {
+        var canvas = document.getElementById("glcanvas");
+        // 初始化 WebGL 上下文
+        gl = initWebGL(canvas);
+        // 只有在 WebGL 可用的时候才继续
+        if (gl) {
+            // 设置清除颜色为黑色，不透明
+            gl.clearColor(0.0, 0.0, 0.0, 1.0);
+            // 清除颜色和深度缓存
+            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        }
+        console.log(gl)
+    gl.drawArrays(gl.POINTS, 0, 1);
+    }
+    //这样，我们可以在浏览器中看到一块黑色区域。
+    //你可能已经注意到，WebGL 遵循的是传统 OpenGL 颜色分量的取值范围，从 0.0 到 1.0。
+    //RGB 的值越高，颜色越亮。
+    //注意，clear() 方法在这里清除颜色和深度缓存，而不是绘制区域的 <canvas>，该方法继承自 OpenGL（基于多缓存模型）。
+    //实际还有模版缓存，但实际很少会被用到。
+
+    function createShader(gl, type, sourceCode) {
+        // 编译着色器类型：顶点着色器及片元着色器。
+        var shader = gl.createShader(type);
+        gl.shaderSource(shader, sourceCode);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            var info = gl.getShaderInfoLog(shader);
+            console.log("无法编译 WebGL 程序。 \n\n" + info);
+            gl.deleteShader(shader);
+            return null;
+        }
+        return shader;
+    }
+
+    function createProgram(gl, vshader, fshader) {
+        // 创建着色器对象
+        var vertexShader = createShader(gl, gl.VERTEX_SHADER, vshader);
+        var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fshader);
+        if (!vertexShader || !fragmentShader) {
+            return null;
+        }
+        // 创建编程对象
+        var program = gl.createProgram();
+        if (!program) {
+            return null;
+        }
+        // 赋值已创建的着色器对象
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        // 连接编程对象
+        gl.linkProgram(program);
+        // 检查链接结果
+        var linked = gl.getProgramParameter(program, gl.LINK_STATUS);
+        if (!linked) {
+            var error = gl.getProgramInfoLog(program);
+            console.log('链接程序失败：' + error);
+            gl.deleteProgram(program);
+            gl.deleteShader(fragmentShader);
+            gl.deleteShader(vertexShader);
+            return null;
+        }
+        return program;
+    }
+
+    function initShaders(gl, vshader, fshader) {
+        var program = createProgram(gl, vshader, fshader);
+        if (!program) {
+            console.log('创建程序失败。');
+            return false;
+        }
+        gl.useProgram(program);
+        gl.program = program;
+        return true;
+    }
+
+</script>
+
+</html>

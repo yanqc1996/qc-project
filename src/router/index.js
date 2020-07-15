@@ -7,12 +7,19 @@ const Login = () => import('@/views/Login')
 const Main = () => import('@/views/Main')
 //首页
 const Index = () => import('@/views/main/Index')
-
+//双向绑定
+const Binding = () => import('@/views/main/binding/Binding')
 const router = new Router({
-      routes: [{
+      routes: [
+        {
           path: '/login',
           name: 'login',
           component: Login,
+        },
+        {
+          path:'/binding',
+          name:'binding',
+          component:Binding
         },
         {
           path: '/',

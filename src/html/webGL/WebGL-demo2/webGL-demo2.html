@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<script>
+    /**
+     * @description webGL原生基础demo
+     */
+</script>
+<script id="VertexShader" type="x-shader/x-vertex">
+    attribute highp vec3 VertexPosition;
+    attribute highp vec2 TextureCoord;
+    uniform highp mat4 TransformationMatrix;
+    uniform highp mat4 PerspectiveMatrix;
+    varying highp vec2 vTextureCoord;
+    void main(void) {
+    gl_Position = PerspectiveMatrix * TransformationMatrix * vec4(VertexPosition, 1.0);
+    vTextureCoord = TextureCoord;
+}
+</script>
+
+<script id="FragmentShader" type="x-shader/x-fragment">
+    varying highp vec2 vTextureCoord;
+    uniform sampler2D uSampler;
+    void main(void) {
+    highp vec4 texelColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+    gl_FragColor = texelColor;
+}
+</script>
+<!-- 这里创建了一个 canvas 元素-->
+
+<body>
+    <canvas id="glcanvas" width="640" height="480"></canvas>
+</body>
+
+
+
+</html>

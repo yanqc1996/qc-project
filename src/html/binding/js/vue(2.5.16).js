@@ -8331,7 +8331,6 @@
             {
                 checkDuplicateKeys(newCh);
             }
-
             while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
                 if (isUndef(oldStartVnode)) {
                     oldStartVnode = oldCh[++oldStartIdx]; // Vnode has been moved left
