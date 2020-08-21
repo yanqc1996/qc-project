@@ -3,8 +3,8 @@
         <div v-for="(item, index) in list" :key="index">{{item}}</div>
         <el-button @click='deleteData'>删除</el-button>
         <div v-for="item in list" :key="item">{{item}}</div>
-        <el-button @click='reserveData'>分隔</el-button>
-        <div v-for="(item, index) in list" :key="index">{{index}}</div>
+        <!-- <el-button @click='reserveData'>分隔</el-button>
+        <div v-for="(item, index) in list" :key="index">{{index}}</div> -->
         <!-- <debounce></debounce> -->
         <!-- <throttle></throttle> -->
     </div>
